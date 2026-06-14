@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://curgase0gamgo"]
+
+[ext_resource type="PackedScene" uid="uid://c6i6p0mbi3crg" path="res://scenes/player.tscn" id="1_uwrxv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqjtg"]
+albedo_color = Color(0.25957775, 0.12450547, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lnu2h"]
+material = SubResource("StandardMaterial3D_yqjtg")
+
+[node name="Game" type="Node3D" unique_id=2034742297]
+
+[node name="Player" parent="." unique_id=2094797060 instance=ExtResource("1_uwrxv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.743474, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1506697701]
+transform = Transform3D(100, 0, 0, 0, 5, 0, 0, 0, 100, 1.0215607, -0.010154247, -0.24927616)
+mesh = SubResource("PlaneMesh_lnu2h")
