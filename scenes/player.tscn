@@ -2,22 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dv23ywj0puuhn" path="res://scripts/player.lua" id="1_3vyb7"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3vyb7"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-
-[sub_resource type="Sky" id="Sky_g2els"]
-sky_material = SubResource("ProceduralSkyMaterial_3vyb7")
-
-[sub_resource type="Environment" id="Environment_qhqgy"]
-background_mode = 2
-sky = SubResource("Sky_g2els")
-tonemap_mode = 2
-glow_enabled = true
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
-height = 2.2
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ccw4b"]
 resource_name = "metal"
 albedo_color = Color(0.92759997, 0.9408054, 0.9592555, 1)
@@ -142,27 +126,23 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_vad06")
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
+height = 2.2
+
 [node name="Player" type="CharacterBody3D" unique_id=2094797060]
 script = ExtResource("1_3vyb7")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=847875104]
-environment = SubResource("Environment_qhqgy")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2043066445]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-shadow_enabled = true
+[node name="craft_speederD" type="MeshInstance3D" parent="." unique_id=1673819954]
+mesh = SubResource("ArrayMesh_c0dca")
+skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=629440120]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.005234778, 0.34663153, 0.019605488)
 shape = SubResource("CapsuleShape3D_u8vuu")
 debug_color = Color(0.99999994, 0.00042330995, 0.101645164, 0.41960785)
 
-[node name="craft_speederD" type="MeshInstance3D" parent="." unique_id=1673819954]
-mesh = SubResource("ArrayMesh_c0dca")
-skeleton = NodePath("")
-
 [node name="Camera3D" type="Camera3D" parent="." unique_id=576950742]
-transform = Transform3D(0.9021867, -0.25640482, 0.3468656, 0.00928182, 0.81550115, 0.578681, -0.43124595, -0.5188588, 0.7381142, 1.6995087, 2.4986002, 2.4896753)
+transform = Transform3D(1, 0, 0, 0, 0.9974892, 0.070818484, 0, -0.070818484, 0.9974892, -0.09083223, 1.2469226, 2.3687353)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1145955428]
 transform = Transform3D(1, 0, 0, 0, 0.6842926, 0.7292075, 0, -0.7292075, 0.6842926, -0.024307013, 2.2637405, 2.1064796)

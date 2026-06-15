@@ -2,17 +2,55 @@
 
 [ext_resource type="PackedScene" uid="uid://c6i6p0mbi3crg" path="res://scenes/player.tscn" id="1_uwrxv"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uwrxv"]
+sky_top_color = Color(0.09131979, 0.00010496114, 0.16960526, 1)
+sky_horizon_color = Color(0.1220372, 0.09509727, 0.13281718, 1)
+ground_bottom_color = Color(0.07822692, 0.061681993, 0.04306133, 1)
+ground_horizon_color = Color(0.1220372, 0.09509727, 0.13281718, 1)
+
+[sub_resource type="Sky" id="Sky_yqjtg"]
+sky_material = SubResource("ProceduralSkyMaterial_uwrxv")
+
+[sub_resource type="Environment" id="Environment_lnu2h"]
+background_mode = 2
+sky = SubResource("Sky_yqjtg")
+tonemap_mode = 2
+glow_enabled = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqjtg"]
 albedo_color = Color(0.25957775, 0.12450547, 0, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lnu2h"]
 material = SubResource("StandardMaterial3D_yqjtg")
 
+[sub_resource type="BoxMesh" id="BoxMesh_uwrxv"]
+
 [node name="Game" type="Node3D" unique_id=2034742297]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=173221995]
+environment = SubResource("Environment_lnu2h")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=107281604]
+transform = Transform3D(0.99888986, -0.011874095, 0.045585345, 0, 0.9677092, 0.25206938, -0.047106452, -0.25178954, 0.96663487, 0, 0, 0)
+light_color = Color(0.9999997, 0.7950622, 0.3909348, 1)
+light_energy = 3.465
+shadow_enabled = true
+
 [node name="Player" parent="." unique_id=2094797060 instance=ExtResource("1_uwrxv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.743474, 0)
+transform = Transform3D(-0.9999548, 0, 0.0095118815, 0, 1, 0, -0.0095118815, 0, -0.9999548, 0, 235.41742, 8.036339)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1506697701]
-transform = Transform3D(100, 0, 0, 0, 5, 0, 0, 0, 100, 1.0215607, -0.010154247, -0.24927616)
+transform = Transform3D(100, 0, 0, 0, 5, 0, 0, 0, 100, 1.0215607, 229.76031, -0.24927616)
 mesh = SubResource("PlaneMesh_lnu2h")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=809846162]
+transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, -1807.6324, 236.6506, 1128.9377)
+mesh = SubResource("BoxMesh_uwrxv")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1052770795]
+transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 467.35168, 473.23587, 1128.9377)
+mesh = SubResource("BoxMesh_uwrxv")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1891334053]
+transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, -1724.4457, 473.23587, -368.7755)
+mesh = SubResource("BoxMesh_uwrxv")
