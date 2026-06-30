@@ -6,6 +6,7 @@ local player = {
 	max_tilt = 25;
 	max_speed = 1000;
 	direction = Vector3.ZERO;
+	shoot_laser = signal("position", "direction")
 }
 
 function player:_ready()
@@ -19,6 +20,7 @@ function player:_physics_process( dt )
 	self.direction = Vector3(direction_x, 0, direction_z)
 	local velocity_input = self.global_transform.basis * (self.direction * self.move_speed * dt)
 	self.velocity = (self.velocity + velocity_input ):limit_length(self.max_speed) -- this is to get sliding motion of SPACE
+	self.velocity = Vector3(self.velocity.x, sin((Time:get_ticks_msec() / 500)) * 5,self.velocity.z) -- levitating effect
 	self:move_and_slide()
 	self:rotate_y(-direction_x * self.turn_speed * dt)
 
@@ -41,8 +43,10 @@ function player:_physics_process( dt )
 	self.current_tilt = move_toward(self.current_tilt, -direction_x * self.max_tilt * dt, self.turn_speed * dt)
 	ShipModel.rotation = Vector3(ShipModel.rotation.x, ShipModel.rotation.y, self.current_tilt)
 
-	--V { turn in a direction when left/right pressed } V--
 
+	if Input:is_action_just_pressed("Laser") then
+		self.shoot_laser:emit(self.global_position, self.global_transform.basis)
+	end
 
 end
 
