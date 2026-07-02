@@ -15,4 +15,11 @@ end
 function meteorite:_on_despawn_timer_timeout()
 	self:queue_free()
 end
+
+function meteorite:_on_area_entered(area)
+	self.speed = 0
+	self:get_node("meteor").material_overlay:set_shader_parameter("progress", 1.0)
+	print("omg stop")
+	area:queue_free()
+end
 return meteorite
