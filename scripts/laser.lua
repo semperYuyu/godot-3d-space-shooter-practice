@@ -7,9 +7,7 @@ local laser = {
 function laser:_ready()
 	self.position = self.position + -self.direction.z
 	self.forward = -self.direction.z -- self.direction comes from player's self.global_transform.basis which is their rotation data
-	self:look_at(self.global_position + self.forward, Vector3.UP)
-	print(self.forward)
-	self.rotation = Vector3(self.rotation.x, self.forward ,self.rotation.z)
+	self:look_at(self.global_position + self.forward, Vector3.UP) -- inherits player's orientation
 	tween = self:create_tween()
 	tween:tween_property(self, "scale", Vector3(2, 2, 2), 0.4)
 	DespawnTimer = self:get_node("DespawnTimer")
@@ -21,7 +19,6 @@ function laser:_physics_process(dt)
 end
 
 function laser:_on_despawn_timer_timeout()
-	print("aw heck D:")
 	self:queue_free()
 end
 return laser

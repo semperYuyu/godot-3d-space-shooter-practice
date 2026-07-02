@@ -59,4 +59,11 @@ mesh = SubResource("BoxMesh_uwrxv")
 
 [node name="Lasers" type="Node3D" parent="." unique_id=1294541754]
 
+[node name="Meteorites" type="Node3D" parent="." unique_id=877061942]
+
+[node name="MeteoriteSpawnTimer" type="Timer" parent="Meteorites" unique_id=98098294]
+wait_time = 4.0
+autostart = true
+
 [connection signal="shoot_laser" from="Player" to="." method="_on_player_shoot_laser"]
+[connection signal="timeout" from="Meteorites/MeteoriteSpawnTimer" to="." method="_on_meteorite_spawn_timer_timeout"]
